@@ -1,0 +1,9 @@
+.env
+node_modules
+*.ymal
+.ymail
+config.*
+*test*
+build
+.wwebjs_auth
+.wwebjs_cache
