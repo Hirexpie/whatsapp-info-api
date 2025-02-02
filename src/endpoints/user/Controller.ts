@@ -7,7 +7,7 @@ import { privateKey } from '../../config/dotenv'
 const generateToken = (data:any) => {
     return jwt.sign({
         authData:data
-    },privateKey,{expiresIn:'30m'})
+    },privateKey,{expiresIn:'1m'})
 }
 
 class UserController {
@@ -53,7 +53,10 @@ class UserController {
                 id:user.id,
                 phoneNumber:user.phoneNumber
             })
-            res.json({token: token})
+            res.json({
+                token: token,
+                expiresAt: Date.now() * 60
+            })
         }
         catch (e) {
             res.status(400).json(e)
