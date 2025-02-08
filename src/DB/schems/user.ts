@@ -6,6 +6,7 @@ export interface IUser extends Document {
     role: 'user' | 'admin' | 'moderator';
     PasswordHash: string;
     createdAt: Date;
+    isAuth: boolean;
     
 }
 
@@ -27,6 +28,10 @@ const UserSchema: Schema = new Schema<IUser>({
     PasswordHash: {
         type: String,
         required: true
+    },
+    isAuth: {
+        type: Boolean,
+        default: false
     }
 
 },{

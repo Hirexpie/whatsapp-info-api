@@ -54,6 +54,7 @@ class UserController {
                 phoneNumber:user.phoneNumber
             })
             res.json({
+                userId: user.id,
                 token: token,
                 expiresAt: Date.now() * 60
             })

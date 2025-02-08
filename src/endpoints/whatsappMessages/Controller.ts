@@ -5,7 +5,7 @@ import { verifyRequest } from '../checkAuth'
 class UserController {
     async getDeletedMessages(req:verifyRequest,res:Response) {
         try {
-            const { phoneNumber,id } = req.authData
+            const phoneNumber  = req.authData?.phoneNumber || ""
             const page:any = req.query.page || '0'
             const tolal = await WhatsappModel.find( {$or: [{from: '+'+phoneNumber},{to: '+'+phoneNumber}]}).sort({ createdAt: -1 }) 
             

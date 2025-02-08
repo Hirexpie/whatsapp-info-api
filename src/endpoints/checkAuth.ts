@@ -2,7 +2,10 @@ import { Request,Response,NextFunction } from 'express'
 import jwt from 'jsonwebtoken'
 
 export interface verifyRequest extends Request {
-    authData?: any;
+    authData?: {
+        id:string,
+        phoneNumber?:string
+    };
   }
 
 export const checkAuth = (req:verifyRequest,res:Response,next:NextFunction) => {
