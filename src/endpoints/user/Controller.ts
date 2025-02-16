@@ -14,7 +14,7 @@ class UserController {
     async register(req:Request,res:Response) {
         try {
 
-            const { nikname,password,phoneNumber } = req.body
+            const { nikname,password } = req.body
             const isUser = await UserModel.findOne({nikname:nikname})
             if (isUser) {
                 res.json({message:'пользаватель с таким ником уже существует'})
@@ -24,8 +24,7 @@ class UserController {
             const PasswordHash = bcrypt.hashSync(password,salt)
             const newUser = new UserModel({
                 nikname:nikname,
-                PasswordHash:PasswordHash,
-                phoneNumber:phoneNumber
+                PasswordHash:PasswordHash
             }) 
             newUser.save()
             res.json({message:'пользавтель успешно за регестрирован'})

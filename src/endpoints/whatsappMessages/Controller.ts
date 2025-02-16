@@ -7,14 +7,13 @@ class UserController {
         try {
             const phoneNumber  = req.authData?.phoneNumber || ""
             const page:any = req.query.page || '0'
-            const tolal = await WhatsappModel.find( {$or: [{from: '+'+phoneNumber},{to: '+'+phoneNumber}]}).sort({ createdAt: -1 }) 
             
             const data = await WhatsappModel.find( {$or: [{from: '+'+phoneNumber},{to: '+'+phoneNumber}]}).sort({ createdAt: -1 }) 
             .skip(page * 100)
             .limit(100)
             res.json({
                 whatsappMessages:data,
-                total:tolal.length
+                total:data.length
             })
         }
         catch (e) {

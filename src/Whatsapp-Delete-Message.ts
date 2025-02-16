@@ -81,11 +81,11 @@ const newClient = (clientId:string) => {
         deleteFolder('.wwebjs_cache')
         addMessageListener(client, clientId);
     });
-        setTimeout(() => {
-            if (!clients[clientId]) {
-                deleteFolder(`.wwebjs_auth/session-client-${clientId}`)
-            }
-        },60000)
+        // setTimeout(() => {
+        //     if (!clients[clientId]) {
+        //         deleteFolder(`.wwebjs_auth/session-client-${clientId}`)
+        //     }
+        // },60000)
     client.initialize();
     // return client;
 };
@@ -189,4 +189,4 @@ app.get('/getAuthedUsers',(req:Request,res:Response) => {
 })
 
 // export default rout
-server.listen(50000, () => console.log("Сервер запущен на порту 50001 нет 50000"));
+server.listen(50000, () => console.log("Сервер запущен на порту 50000"));
